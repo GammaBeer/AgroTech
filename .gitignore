@@ -1,0 +1,14 @@
+# Ignore compiled Python files
+__pycache__/
+*.pyc
+
+# Ignore the models folder
+backend/app/models/
+
+# Ignore node_modules for frontend
+frontend/node_modules/
+# Ignore Next.js build output
+frontend/.next/
+# Ignore environment variables
+frontend/.env*.local
+
