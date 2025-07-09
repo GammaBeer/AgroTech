@@ -15,8 +15,18 @@ export default function Home() {
     setError(null);
     setRecommendations([]); // Clear previous recommendations
 
+    // Get the backend URL from environment variables
+    const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+    if (!BACKEND_URL) {
+      setError("Backend URL is not configured. Check NEXT_PUBLIC_BACKEND_URL in your .env.local file.");
+      setIsLoading(false);
+      return;
+    }
+
     try {
-      const response = await fetch('http://127.0.0.1:8000/predict', { // **IMPORTANT: Update this URL to your FastAPI backend URL**
+      // Use the environment variable here
+      const response = await fetch(`${BACKEND_URL}/predict`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
